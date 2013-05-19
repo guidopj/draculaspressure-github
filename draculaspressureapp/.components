@@ -1,0 +1,9 @@
+---
+:orm: datamapper
+:test: rspec
+:mock: none
+:script: none
+:renderer: erb
+:stylesheet: none
+:namespace: Draculaspressureapp
+:migration_format: number
