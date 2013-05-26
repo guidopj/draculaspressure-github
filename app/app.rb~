@@ -7,7 +7,7 @@ module Draculaspressureapp
     enable :sessions
     
     get '/' do
-      'Coming Soon'
+      'coming soon'
     end
   end
 end
