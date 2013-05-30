@@ -1,15 +1,37 @@
-Feature: Multiple site support
-  As a Mephisto site owner
-  I want to host blogs for different people
-  In order to make gigantic piles of money
+Feature: See my last ten records arterial blood pressure
+  As a User
+  I want see my last ten records arterial blood pressure
+  
+  Scenario: recording my pressure within the parameters
+    Given i have a max of "12" 
+    And i have a min of "8"
+    When i am on the "pressure records page"
+    i should see "max: 12"
+    And i should see "min: 8"
+    And i should see "Your pressure is normal"
 
-  Background:
-    Given a global administrator named "Greg"
-    And a blog named "Greg's anti-tax rants"
-    And a customer named "Dr. Bill"
-    And a blog named "Expensive Therapy" owned by "Dr. Bill"
+  Scenario: recording my pressure outside the parameters
+    Given i have a max of "14" 
+    And i have a min of "10"
+    When i am on the "pressure records page"
+    i should see "max: 14"
+    And i should see "min: 10"
+    And i should see "Your pressure is NOT normal"
+   
+  Scenario: begining my pressure record table
+    Given i do not have any pressure records
+    When i am on the "pressure records page"
+    Then page.should have_css("table#pressureRecordsTable tr", :count=>0)
 
-  Scenario: Dr. Bill posts to his own blog
-    Given I am logged in as Dr. Bill
-    When I try to post to "Expensive Therapy"
-    Then I should see "Your article was published."
+  Scenario: my pressure record table has ten rows
+    Given i have "10" pressure records
+    When i am on the "pressure records page"
+    Then page.should have_css("table#pressureRecordsTable tr", :count=>10)
+
+  Scenario: my pressure record table has ten rows and i add one more
+    Given i have "10" pressure records
+    When i add one more
+    And when i am on the "pressure records page"
+    Then page.should have_css("table#pressureRecordsTable tr", :count=>11)
+    And i should not see id "1"
+
