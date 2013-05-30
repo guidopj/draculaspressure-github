@@ -2,6 +2,9 @@ Feature: See my last ten records arterial blood pressure
   As a User
   I want see my last ten records arterial blood pressure
   
+	BackGround:
+		Given I am on "the record page"
+
   Scenario: recording my pressure within the parameters
     Given i have a max of "12" 
     And i have a min of "8"
@@ -21,16 +24,17 @@ Feature: See my last ten records arterial blood pressure
   Scenario: begining my pressure record table
     Given i do not have any pressure records
     When i am on the "pressure records page"
-    Then page.should have_css("table#pressureRecordsTable tr", :count=>0)
+		Then i should not see any blood pressures´s record
 
   Scenario: my pressure record table has ten rows
-    Given i have "10" pressure records
+    Given i have 10 pressure records
     When i am on the "pressure records page"
-    Then page.should have_css("table#pressureRecordsTable tr", :count=>10)
+		Then i should see 10 blood pressure´s records
 
   Scenario: my pressure record table has ten rows and i add one more
-    Given i have "10" pressure records
+    Given i have 10 pressure records
+		And my first record has id "1"
     When i add one more
     And when i am on the "pressure records page"
-    Then page.should have_css("table#pressureRecordsTable tr", :count=>11)
+    Then i should see 10 blood pressure´s records
     And i should not see id "1"
