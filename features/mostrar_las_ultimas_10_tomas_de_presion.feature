@@ -6,7 +6,7 @@ Feature: See my last ten records arterial blood pressure
     Given i have a max of "12" 
     And i have a min of "8"
     When i am on the "pressure records page"
-    i should see "12" in the max field of the table
+    Then i should see "12" in the max field of the table
     And i should see "8" in the min field of the table
     And i should see "Your pressure is normal"
 
@@ -14,7 +14,7 @@ Feature: See my last ten records arterial blood pressure
     Given i have a max of "14" 
     And i have a min of "10"
     When i am on the "pressure records page"
-    i should see "14" in the max field of the table
+    Then i should see "14" in the max field of the table
     And i should see "10" in the min field of the table
     And i should see "Your pressure is NOT normal"
    
