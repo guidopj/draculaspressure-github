@@ -34,4 +34,3 @@ Feature: See my last ten records arterial blood pressure
     And when i am on the "pressure records page"
     Then page.should have_css("table#pressureRecordsTable tr", :count=>11)
     And i should not see id "1"
-

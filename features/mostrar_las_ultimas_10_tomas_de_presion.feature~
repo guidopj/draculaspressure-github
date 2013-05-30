@@ -2,36 +2,13 @@ Feature: See my last ten records arterial blood pressure
   As a User
   I want see my last ten records arterial blood pressure
   
-  Scenario: recording my pressure within the parameters
-    Given i have a max of "12" 
-    And i have a min of "8"
-    When i am on the "pressure records page"
-    i should see "max: 12"
-    And i should see "min: 8"
-    And i should see "Your pressure is normal"
+  Background: Given
+    And a date "2013/01/01"
+    And an hour "09:51"
+    And a min value "8"
+    And a max value "12"
 
-  Scenario: recording my pressure outside the parameters
-    Given i have a max of "14" 
-    And i have a min of "10"
-    When i am on the "pressure records page"
-    i should see "max: 14"
-    And i should see "min: 10"
-    And i should see "Your pressure is NOT normal"
+  Scenario: happy path
+    Given I am on "the home page"
+    Then I should see
    
-  Scenario: begining my pressure record table
-    Given i do not have any pressure records
-    When i am on the "pressure records page"
-    Then page.should have_css("table#pressureRecordsTable tr", :count=>0)
-
-  Scenario: my pressure record table has ten rows
-    Given i have "10" pressure records
-    When i am on the "pressure records page"
-    Then page.should have_css("table#pressureRecordsTable tr", :count=>10)
-
-  Scenario: my pressure record table has ten rows and i add one more
-    Given i have "10" pressure records
-    When i add one more
-    And when i am on the "pressure records page"
-    Then page.should have_css("table#pressureRecordsTable tr", :count=>11)
-    And i should not see id "1"
-
