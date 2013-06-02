@@ -2,10 +2,11 @@ Feature: See my last ten records arterial blood pressure
   As a User
   I want see my last ten records arterial blood pressure
   
-  Scenario: testing
+  Background: testing
     Given i have:
-    |a | b |
-    |c | d |
+    |id | max | min|
+    |1  |  12 | 8 |
+    |2 |    3 |  5 |
     
   Scenario: recording my pressure within the parameters
     Given i have a max of "12" 

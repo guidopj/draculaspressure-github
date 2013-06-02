@@ -1,10 +1,9 @@
 Given(/^i have:$/) do |table|
-  data = table.raw
-  
+  data = table.hashes()
 end
 
 Given(/^i have a max of "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  data[0]['max']
 end
 
 Given(/^i have a min of "(.*?)"$/) do |arg1|

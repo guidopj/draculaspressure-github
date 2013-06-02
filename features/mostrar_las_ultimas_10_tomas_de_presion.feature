@@ -5,7 +5,7 @@ Feature: See my last ten records arterial blood pressure
   Background: testing
     Given i have:
     |id | max | min|
-    |1  |    2 |  3 |
+    |1  |  12 | 8 |
     |2 |    3 |  5 |
     
   Scenario: recording my pressure within the parameters
