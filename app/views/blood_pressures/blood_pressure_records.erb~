@@ -1,8 +1,8 @@
 <html>
   <head><p class="lead">Your blood pressure records</p></head>
   <body>
-    <% @rec.each do |r|%>
-    <table border = "1" class="table table-striped"  id = "recordTable">  
+        <table border = "1" class="table table-striped"  id = "recordTable"> 
+    <% @rec.each do |r|%> 
    <tr>
       <td>id</td>
       <td>max</td>

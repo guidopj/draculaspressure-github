@@ -1,18 +1,12 @@
-Given(/^i have:$/) do |table|
-  data = table.hashes()
-  data[0]['max']
+Given(/^i am at "(.*?)" page$/) do |arg1|
 end
 
 Given(/^i have a max of "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  
 end
 
 Given(/^i have a min of "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
 
-When(/^i am on the "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^i should see "(.*?)" in the max field of the table$/) do |arg1|
@@ -27,6 +21,10 @@ Then(/^i should see "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
+When(/^i am on the "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
 Given(/^i do not have any pressure records$/) do
   pending # express the regexp above with the code you wish you had
 end
@@ -36,7 +34,9 @@ Then(/^i should not see any blood pressures record$/) do
 end
 
 Given(/^i have (\d+) pressure records$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  #page.should have_css("table#recordTable tr", :count=>1)
+  #page.all('table#recordTable tr').count.should == 10
+  all("table#movies tr").count
 end
 
 Then(/^i should see (\d+) blood pressures records$/) do |arg1|
@@ -70,6 +70,5 @@ end
 Then(/^I should see "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end
-
 
 

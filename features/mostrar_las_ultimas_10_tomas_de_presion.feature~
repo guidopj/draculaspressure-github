@@ -9,9 +9,10 @@ Feature: See my last ten records arterial blood pressure
     |2 |    3 |  5 |
     
   Scenario: recording my pressure within the parameters
+    
     Given i have a max of "12" 
     And i have a min of "8"
-   When i am on the "blood_pressure_records"
+    When i am on the "pressure records page"
     Then i should see "12" in the max field of the table
     And i should see "8" in the min field of the table
     And i should see "Your pressure is normal"
