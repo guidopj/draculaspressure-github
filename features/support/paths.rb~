@@ -16,7 +16,7 @@ module NavigationHelpers
     when /the new record\s?page/
       '/records/new'
 
-    when /blood_pressure_records/
+    when /blood_pressure_records
       '/blood_pressure_records'
 
     # Add more mappings here.

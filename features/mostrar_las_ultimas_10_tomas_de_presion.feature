@@ -5,8 +5,7 @@ Feature: See my last ten records arterial blood pressure
   Background: testing
     Given i am at "blood_pressure_records" page
     
-  Scenario: recording my pressure within the parameters
-    
+  Scenario: recording my pressure within the parameters 
     Given i have a max of "12" 
     And i have a min of "8"
     Then i should see "12" in the max field of the table
@@ -27,9 +26,8 @@ Feature: See my last ten records arterial blood pressure
     Then i should not see any blood pressures record
 
   Scenario: my pressure record table has ten rows
-    Given i have 10 pressure records
-    When i am on the "pressure records page"
-    Then i should see 10 blood pressures records
+    Given i have 20 pressure records
+    Then i should see 20 blood pressures records
 
   Scenario: my pressure record table has ten rows and i add one more
     Given i have 10 pressure records
