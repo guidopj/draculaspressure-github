@@ -1,6 +1,6 @@
 Given(/^i have:$/) do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  data = table.raw
+  
 end
 
 Given(/^i have a max of "(.*?)"$/) do |arg1|
