@@ -28,6 +28,11 @@ module Draculaspressureapp
       render '/home/login'
     end
 
+   get '/blood_pressure_records' do
+     @rec = BloodPressure.all(:order => [:id.asc], :limit => 10)
+     render 'blood_pressures/blood_pressure_records'
+  end
+
     post :auth, :map => '/auth/:provider/callback' do
         auth    = request.env["omniauth.auth"]
         account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) || 

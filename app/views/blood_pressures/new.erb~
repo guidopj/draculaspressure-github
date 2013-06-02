@@ -5,7 +5,7 @@
     <input type="text" id="blood_pressure[max]" name="blood_pressure[max]" placeholder="max value" class="large" value="<%= @blood_pressure.max %>"/>
     <input type="text" id="blood_pressure[min]" name="blood_pressure[min]" placeholder="min value" class="large" value="<%= @blood_pressure.min %>"/>
 
-    <button class = "btn btn-primary" id="saveButton">Save<button>
+    <a href="/blood_pressure_record"><button class = "btn btn-primary" id="saveButton">Save<button></a>
     <% if flash[:error] %>
         <div class="alert alert-error">
           <%=flash[:error]   %>

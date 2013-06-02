@@ -12,10 +12,10 @@ Draculaspressureapp::App.controllers :blood_pressures do
     render 'blood_pressures/new'
   end
 
-  get :show do
-    @blood_pressure = BloodPressure.get(params[:id].to_i)
-    render 'blood_pressures/show'
-  end
+  #get :show do
+   # @blood_pressure = BloodPressure.get(params[:id].to_i)
+    #render 'blood_pressures/show'
+  #end
 
 
   post :create do

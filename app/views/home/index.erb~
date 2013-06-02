@@ -17,6 +17,17 @@
                 </ol>
             <div class="centered">
                  <a href="/login"><button class="btn big">Add new record</button></a>
+                 <% if current_account %>
+                   <li><a rel="tooltip" href="/blood_pressures/new" title="Perfil"><%= current_account.uid %></a></li>
+                 <% else %>
+                    <li><a rel="tooltip" href="/login" title="Login"></a></li>
+                 <% end %>
+
+
+
+
+
+               
             </div>
             </span>
         <div style="clear:both"></div>
