@@ -1,4 +1,5 @@
-Given(/^i am at "(.*?)" page$/) do |arg1|
+Given(/^i am at "(.*?)" page$/) do |page_name|
+ visit path_to(page_name)
 end
 
 Given(/^i have a max of "(.*?)"$/) do |arg1|

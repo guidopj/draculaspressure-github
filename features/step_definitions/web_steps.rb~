@@ -36,7 +36,7 @@ end
 Given(/^i have (\d+) pressure records$/) do |arg1|
   #page.should have_css("table#recordTable tr", :count=>1)
   #page.all('table#recordTable tr').count.should == 10
-  all("table#movies tr").count
+  all("table#recordTable tr").count
 end
 
 Then(/^i should see (\d+) blood pressures records$/) do |arg1|
