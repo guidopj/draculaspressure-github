@@ -4,8 +4,11 @@
     <h1>Pression record details</h1>
     <input type="text" id="blood_pressure[max]" name="blood_pressure[max]" placeholder="max value" class="large" value="<%= @blood_pressure.max %>"/>
     <input type="text" id="blood_pressure[min]" name="blood_pressure[min]" placeholder="min value" class="large" value="<%= @blood_pressure.min %>"/>
-
-    <button class = "btn btn-primary" id="saveButton">Save<button>
+		
+		<p><%= @min_value_message %></p>
+		<p><%= @max_value_message %></p>
+    
+		<button class = "btn btn-primary" id="saveButton">Save<button>
     <% if flash[:error] %>
         <div class="alert alert-error">
           <%=flash[:error]   %>

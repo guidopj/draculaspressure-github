@@ -9,14 +9,13 @@ class BloodPressure
 	property :name, String
 
 	validates_with_method :check_min
-	validates_with_method :check_min
+	validates_with_method :check_max
 	
 	def check_min  
 		return self.min.is_a?(Integer)
   end
 	
-		def check_max
+	def check_max
     return self.max.is_a?(Integer)
   end
-
 end

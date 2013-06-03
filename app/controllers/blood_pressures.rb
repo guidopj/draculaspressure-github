@@ -19,15 +19,22 @@ Draculaspressureapp::App.controllers :blood_pressures do
 
 
   post :create do
+		@min_value_message = ""
+		@min_value_message = ""
 		params[:blood_pressure]["date"] = DateTime.now.to_s
 		params[:blood_pressure]["name"] = session[:current_account_uid]
     @blood_pressure = BloodPressure.new(params[:blood_pressure])
-    if @blood_pressure.save
-      redirect(url(:blood_pressures, :show, :id => @blood_pressure.id))
-    else
-      flash.now[:error] = "Error: both inputs required"
-      render 'blood_pressures/new'
-    end
+	  if @blood_pressure.save
+	    redirect(url(:blood_pressures, :show, :id => @blood_pressure.id))
+	  else
+			if not @blood_pressure.check_min
+				@min_value_message = "The Min Value is not valid"
+			end
+			if not @blood_pressure.check_max 
+			  @max_value_message = "The Max Value is not valid"
+			end
+	    render 'blood_pressures/new'
+	  end
   end
 
   get :edit, :with => :id do
