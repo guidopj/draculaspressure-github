@@ -10,7 +10,7 @@ end
 World(WithinHelpers)
 
 Given(/^i am at "(.*?)" page$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+  visit ""
 end
 
 Given(/^i have a max of "(.*?)"$/) do |arg1|
