@@ -6,4 +6,5 @@ class BloodPressure
   property :max, Integer
   property :min, Integer
   property :date, DateTime, :required => true
+	property :name, String
 end

@@ -29,7 +29,7 @@ module Draculaspressureapp
     end
 
    get '/blood_pressure_records' do
-     @rec = BloodPressure.all(:order => [:id.asc], :limit => 10)
+     @rec = BloodPressure.all(:name => session[:current_account_uid], :order => [:id.desc], :limit => 10)
      render 'blood_pressures/blood_pressure_records'
   end
 
@@ -37,6 +37,7 @@ module Draculaspressureapp
         auth    = request.env["omniauth.auth"]
         account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) || 
                 Account.create_with_omniauth(auth)
+				session[:current_account_uid] = auth["uid"]
         set_current_account(account)
         redirect "/blood_pressures/new"
     end

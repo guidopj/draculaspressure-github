@@ -20,6 +20,7 @@ Draculaspressureapp::App.controllers :blood_pressures do
 
   post :create do
 		params[:blood_pressure]["date"] = DateTime.now.to_s
+		params[:blood_pressure]["name"] = session[:current_account_uid]
     @blood_pressure = BloodPressure.new(params[:blood_pressure])
     if @blood_pressure.save
       redirect(url(:blood_pressures, :show, :id => @blood_pressure.id))

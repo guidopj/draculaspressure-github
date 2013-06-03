@@ -3,9 +3,9 @@ migration 2, :create_blood_pressures do
     create_table :blood_pressures do
       column :id, Integer, :serial => true
       column :max, Integer
+			column :name, String, :length => 255
       column :min, Integer
       column :date, DateTime
-			column :name, String, :length => 255
     end
   end
 
