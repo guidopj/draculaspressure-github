@@ -1,0 +1,9 @@
+---
+:orm: datamapper
+:test: cucumber
+:mock: none
+:script: jquery
+:renderer: slim
+:stylesheet: none
+:namespace: Draculaspressureapp
+:migration_format: number
