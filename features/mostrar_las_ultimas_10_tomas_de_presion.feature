@@ -33,6 +33,6 @@ Feature: See my last ten records arterial blood pressure
     Given i have 10 pressure records
     And my first record has id 1
     When i add one more
-    And when i am on the "pressure records page"
+    And when i am on the "blood_pressure_records"
     Then i should see 10 blood pressures records
     And i should not see id "1"
