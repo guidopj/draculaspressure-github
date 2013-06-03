@@ -5,5 +5,5 @@
 :script: jquery
 :renderer: slim
 :stylesheet: none
-:namespace: Camilo
+:namespace: Draculaspressureapp
 :migration_format: number
