@@ -7,4 +7,16 @@ class BloodPressure
   property :min, Integer
   property :date, DateTime, :required => true
 	property :name, String
+
+	validates_with_method :check_min
+	validates_with_method :check_min
+	
+	def check_min  
+		return self.min.is_a?(Integer)
+  end
+	
+		def check_max
+    return self.max.is_a?(Integer)
+  end
+
 end
