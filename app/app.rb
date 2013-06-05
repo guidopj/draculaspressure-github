@@ -19,7 +19,6 @@ module Draculaspressureapp
     
 		configure :staging, :production do
       use OmniAuth::Builder do
-         provider:developer
          provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_SECRET_KEY'] 
       end
       set :login_page, "/auth/twitter"    
