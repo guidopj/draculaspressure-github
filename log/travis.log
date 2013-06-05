@@ -1,0 +1,1 @@
+[31m  ERROR[0m - [33m04/Jun/2013 21:57:39[0m Access denied for user 'root'@'localhost' (using password: NO) (code: 1045, sql state: 28000, query: , uri: )

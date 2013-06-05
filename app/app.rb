@@ -7,11 +7,14 @@ module Draculaspressureapp
 
     enable :sessions
 
+		
+
 		configure :development, :travis do
       use OmniAuth::Builder do
         provider :developer
       end
-      set :login_page, "/login"    
+      set :login_page, "/login"   
+      ENV['APP_URL'] = 'http://127.0.0.1:3000/' 
     end
     
 		configure :staging, :production do
@@ -21,8 +24,6 @@ module Draculaspressureapp
       set :login_page, "/auth/twitter"    
       ENV['APP_URL'] = 'http://127.0.0.1:3000/'
     end
-
-    #provider :twitter,  'consumer_key', 'consumer_secret'
     
     access_control.roles_for :any do |role|
         role.protect "/blood_pressures"
