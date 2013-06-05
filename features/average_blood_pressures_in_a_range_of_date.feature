@@ -1,3 +1,4 @@
+@wip
 Feature: average of blood pressures in a range of date 
 
 	Background:
@@ -17,8 +18,8 @@ Feature: average of blood pressures in a range of date
 		Given i have a blood pressure record with min "80" and max "120" and date "2015-1-1"
 		Given i have a blood pressure record with min "80" and max "120" and date "2015-1-1"
 		Given im on "blood pressures average page"
-		when i fill in "range_date[min]" with "2015-1-1"
-		when i fill in "range_date[max]" with "2015-1-1"
+		When i fill in "range_date[min]" with "2015-1-1"
+		When i fill in "range_date[max]" with "2015-1-1"
 		When i press "averageButton"
 		Then is should see "Min average: 80"
 		Then is should see "Max average: 120"
@@ -30,8 +31,8 @@ Feature: average of blood pressures in a range of date
 		Given i have a blood pressure record with min "80" and max "120" and date "2020-3-10"
 		Given i have a blood pressure record with min "80" and max "120" and date "2100-7-7"
 		Given im on "blood pressures average page"
-		when i fill in "range_date[min]" with "2010-1-1"
-		when i fill in "range_date[max]" with "2020-1-1"
+		When i fill in "range_date[min]" with "2010-1-1"
+		When i fill in "range_date[max]" with "2020-1-1"
 		When i press "averageButton"
 		Then is should see "Min average: 70"
 		Then is should see "Max average: 113"
@@ -43,8 +44,8 @@ Feature: average of blood pressures in a range of date
 		Given i have a blood pressure record with min "80" and max "120" and date "2020-3-10"
 		Given i have a blood pressure record with min "80" and max "120" and date "2100-7-7"
 		Given im on "blood pressures average page"
-		when i fill in "range_date[min]" with "2005-1-1"
-		when i fill in "range_date[max]" with "2009-1-1"
+		When i fill in "range_date[min]" with "2005-1-1"
+		When i fill in "range_date[max]" with "2009-1-1"
 		When i press "averageButton"
 		Then is should see "There is no records in the specified range of dates"
 
