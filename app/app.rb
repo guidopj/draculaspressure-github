@@ -15,9 +15,11 @@ module Draculaspressureapp
       ENV['APP_URL'] = 'http://127.0.0.1:3000/' 
     end
     
-    configure :staging, :production do
+    configure :staging,:development, :production do
       use OmniAuth::Builder do
-         provider :twitter, ENV['TWITTER_CONSUMER_KEY']=SGGn3SkV4hrAy7Em8eyxQ, ENV['TWITTER_SECRET_KEY'] =0rOsaRXCPGaHDIYhxrvEC5ARC1L18XcAaWgn1JcFsm4;
+        provider :twitter, 
+				ENV['TWITTER_CONSUMER_KEY']='SGGn3SkV4hrAy7Em8eyxQ'
+			 	ENV['TWITTER_SECRET_KEY'] ='0rOsaRXCPGaHDIYhxrvEC5ARC1L18XcAaWgn1JcFsm4'
       end
       set :login_page, "/auth/twitter"
 			ENV['APP_URL'] = 'http://127.0.0.1:3000/'    
