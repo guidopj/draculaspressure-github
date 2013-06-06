@@ -17,6 +17,11 @@ Draculaspressureapp::App.controllers :blood_pressures do
     render 'blood_pressures/show'
   end
 
+  get :average do
+    @records = BloodPressure.all()
+    @avr = PressureAverage.new()
+    render 'blood_pressures/average'
+  end
 
   post :create do
 		@min_value_message = ""

@@ -20,7 +20,7 @@ describe BloodPressure do
 			blood_pressure = BloodPressure.new
 			blood_pressure.check_min.should be false
 		end
-  end
+        end
 	
 	describe 'check_max' do
 		it 'should return true if the value is an Integer' do
@@ -39,6 +39,7 @@ describe BloodPressure do
 			blood_pressure = BloodPressure.new
 			blood_pressure.check_max.should be false
 		end
-
-  end
+ 
+                
+         end
 end

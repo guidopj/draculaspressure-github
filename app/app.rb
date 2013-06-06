@@ -7,9 +7,7 @@ module Draculaspressureapp
 
     enable :sessions
 
-		
-
-		configure :development, :travis do
+    configure :development, :travis do
       use OmniAuth::Builder do
         provider :developer
       end
@@ -17,7 +15,7 @@ module Draculaspressureapp
       ENV['APP_URL'] = 'http://127.0.0.1:3000/' 
     end
     
-		configure :staging, :production do
+    configure :staging, :production do
       use OmniAuth::Builder do
          provider :twitter, ENV['TWITTER_CONSUMER_KEY']=SGGn3SkV4hrAy7Em8eyxQ, ENV['TWITTER_SECRET_KEY'] =0rOsaRXCPGaHDIYhxrvEC5ARC1L18XcAaWgn1JcFsm4;
       end
