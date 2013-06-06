@@ -21,7 +21,8 @@ module Draculaspressureapp
       use OmniAuth::Builder do
          provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_SECRET_KEY'] 
       end
-      set :login_page, "/auth/twitter"    
+      set :login_page, "/auth/twitter"
+			ENV['APP_URL'] = 'http://127.0.0.1:3000/'    
 
     end
     
@@ -46,7 +47,6 @@ module Draculaspressureapp
         auth    = request.env["omniauth.auth"]
         account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) || 
                 Account.create_with_omniauth(auth)
-				session[:current_account_uid] = auth["uid"]
         set_current_account(account)
         redirect "/blood_pressures/new"
     end
