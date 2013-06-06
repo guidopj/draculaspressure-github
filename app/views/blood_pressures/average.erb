@@ -1,0 +1,16 @@
+<html>
+  <head><p class="lead">Your pressure averages</p></head>
+  <body>
+   <table border = "1"  class="table">
+     <tr class = "success">
+       <td>MIN</td>
+       <td> MAX </td>
+     </tr>
+     <tr class ="info">
+       <td><%= @avr.minPressureAverage(@records) %></td>
+       <td><%= @avr.maxPressureAverage(@records) %></td>
+     </tr>
+   </table>
+     <a href="/blood_pressure_records"><button class = "btn btn-warning" type="button">Go back</button></a> 
+  </body>
+</html>

@@ -5,7 +5,7 @@ Feature: average of blood pressures in a range of date
 		Given i am logged in
 
 
-	Scenario:  No recrods yet
+	Scenario:  No records yet
 		Given im on "blood pressures average page"
 		When i press "averageButton"
 		Then is should see "You have not recorded  yet"
