@@ -7,7 +7,7 @@ module Draculaspressureapp
 
     enable :sessions
 
-    configure :development, :travis do
+    configure :travis, :test , :development do
       use OmniAuth::Builder do
         provider :developer
       end
@@ -15,14 +15,11 @@ module Draculaspressureapp
       ENV['APP_URL'] = 'http://127.0.0.1:3000/' 
     end
     
-    configure :staging,:development, :production do
+    configure :staging, :production do
       use OmniAuth::Builder do
-        provider :twitter, 
-				ENV['TWITTER_CONSUMER_KEY']='SGGn3SkV4hrAy7Em8eyxQ'
-			 	ENV['TWITTER_SECRET_KEY'] ='0rOsaRXCPGaHDIYhxrvEC5ARC1L18XcAaWgn1JcFsm4'
+        provider :twitter, 'SGGn3SkV4hrAy7Em8eyxQ', '0rOsaRXCPGaHDIYhxrvEC5ARC1L18XcAaWgn1JcFsm4'
       end
-      set :login_page, "/auth/twitter"
-			ENV['APP_URL'] = 'http://127.0.0.1:3000/'    
+      set :login_page, "/auth/twitter"   
 
     end
     
@@ -43,7 +40,7 @@ module Draculaspressureapp
      render 'blood_pressures/blood_pressure_records'
   end
 
-    post :auth, :map => '/auth/:provider/callback' do
+    get :auth, :map => '/auth/:provider/callback' do
         auth    = request.env["omniauth.auth"]
         account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) || 
                 Account.create_with_omniauth(auth)
