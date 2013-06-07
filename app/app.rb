@@ -18,12 +18,8 @@ module Draculaspressureapp
     configure :staging, :production do
       use OmniAuth::Builder do
         provider :twitter,ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_SECRET_KEY'] 
-#'SGGn3SkV4hrAy7Em8eyxQ','0rOsaRXCPGaHDIYhxrvEC5ARC1L18XcAaWgn1JcFsm4'
-#,ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_SECRET_KEY'] 
       end
       set :login_page, "/auth/twitter"
-			
-
     end
     
     access_control.roles_for :any do |role|
@@ -43,7 +39,7 @@ module Draculaspressureapp
      render 'blood_pressures/blood_pressure_records'
   end
 
-    get :auth, :map => '/auth/:provider/callback' do
+    post :auth, :map => '/auth/:provider/callback' do
         auth    = request.env["omniauth.auth"]
         account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) || 
                 Account.create_with_omniauth(auth)

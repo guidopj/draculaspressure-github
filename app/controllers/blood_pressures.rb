@@ -27,7 +27,7 @@ Draculaspressureapp::App.controllers :blood_pressures do
 		@min_value_message = ""
 		@min_value_message = ""
 		params[:blood_pressure]["date"] = DateTime.now.to_s
-		params[:blood_pressure]["name"] = session[:current_account_uid]
+		params[:blood_pressure]["duenio"] = session[:current_account_username]
     @blood_pressure = BloodPressure.new(params[:blood_pressure])
 	  if @blood_pressure.save
 	    redirect(url(:blood_pressures, :show, :id => @blood_pressure.id))

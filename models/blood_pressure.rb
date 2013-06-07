@@ -6,7 +6,7 @@ class BloodPressure
   property :max, Integer
   property :min, Integer
   property :date, DateTime, :required => true
-  property :name, String
+  property :duenio, String
 
 	validates_with_method :check_min
 	validates_with_method :check_max
