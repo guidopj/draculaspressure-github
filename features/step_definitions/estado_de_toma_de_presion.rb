@@ -1,8 +1,8 @@
-Then(/^i should see a green light$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^i should see a red light$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see the image "(.*?)"$/) do |image|
+  if page.respond_to? :should
+		page.should have_selector("img[src$='#{image}']")
+	else
+		assert page.has_selector?("img[src='#{image}']")
+	end
 end
 

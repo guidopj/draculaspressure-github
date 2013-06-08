@@ -6,11 +6,11 @@ Feature:  Estado de toma de presion
 			when i fill in "blood_pressure[min]" with "12"
 			when i fill in "blood_pressure[max]" with "8"
 			and i press the"saveButton"
-			Then i should see a green light
+			Then I should see the image "http://programacionyjuegos.files.wordpress.com/2012/02/cuadrado_verde.png"
 				
 		Scenario:  The blood pressure is not fine
 			given im on " the new record page"
 			when i fill in "blood_pressure[min]" with "10"
 			when i fill in "blood_pressure[max]" with "6"
 			and i press the"saveButton"
-			Then i should see a red light 
+			Then I should see the image "http://programacionyjuegos.files.wordpress.com/2012/02/cuadrado_verde.png"

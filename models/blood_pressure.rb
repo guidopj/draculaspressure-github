@@ -18,5 +18,12 @@ class BloodPressure
   def check_max
     return self.max.is_a?(Integer)
   end
-  
+
+	def get_state_image
+		if min.between?(7,9) and max.between?(11,13)
+			return "http://programacionyjuegos.files.wordpress.com/2012/02/cuadrado_verde.png"
+		else
+			return "http://www.cientec.or.cr/matematica/origami/rojo.gif" 
+  	end
+	end
 end
