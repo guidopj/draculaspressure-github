@@ -5,7 +5,7 @@ migration 2, :create_blood_pressures do
       column :max, Integer
       column :min, Integer
       column :date, DateTime
-			column :name, String, :length => 255
+      column :name, String, :length => 255
     end
   end
 

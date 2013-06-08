@@ -8,23 +8,20 @@
       <td>max</td>
       <td>min</td>
       <td>date</td>
-			<td>nombre</td>
-			<td>estado</td>
-    </tr>
-    <tr>
+      <td>name</td>
+      <td>state</td>
+   </tr>
+   <tr>
       <td><%= r.id %></td>
       <td><%= r.max %></td>
       <td><%= r.min %></td>
       <td><%= r.date %></td>
-			<td><%= r.duenio %></td>
-			<td>     
-			<span class="span3">
-    <!-- <img src="http://www.cientec.or.cr/matematica/origami/rojo.gif" width="25" height="25">
--->	
-			<img src="http://programacionyjuegos.files.wordpress.com/2012/02/cuadrado_verde.png" width="25" height="25"
-   	 	</span>
-			</td>
-      <td><button class = "btn btn-danger">Delete record</button></td>
+     <td><%= r.name %></td>
+     <td>
+         <img src="http://www.cientec.or.cr/matematica/origami/rojo.gif" width="25" height="25"/>	
+         <img src="http://programacionyjuegos.files.wordpress.com/2012/02/cuadrado_verde.png" width="25" height="25"/>
+    </td>  
+    <td><button class = "btn btn-danger">Delete record</button></td>
     </tr>
   </table>
     <% end %>
@@ -35,6 +32,13 @@
   </div>
   <div  style="height:50px; color:#0000FF">
     <p>see your min and max pressure average</p>
+  <form method='post' action='/blood_pressures' noValidate='noValidate'>
+	  <%= csrf_token_field %>
+	  <label for='date1'>minDate</label>
+		<input type='date' id='minDate' name='minDate' placeholder='yyyy-mm-dd' />
+		<label for='date2'>Date2:</label>
+		<input type='date' id='maxDate' name='maxDate' placeholder='yyyy-mm-dd' />    
+  </form>
     <a href = "blood_pressures/average"><input class ="btn btn-primary" id = "buttonCalculate" type ='button' value = "Calculate average"></input>
   </div></a>
   </body>   

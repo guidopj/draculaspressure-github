@@ -18,16 +18,27 @@ Draculaspressureapp::App.controllers :blood_pressures do
   end
 
   get :average do
-    @records = BloodPressure.all()
-    @avr = PressureAverage.new()
+    @avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate])
+    @avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate])
     render 'blood_pressures/average'
   end
+
+  #get :calculateAverage do
+  # begin
+   #	@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate])
+   #	@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate])
+   #rescue => detail
+    # @errorMessage = detail.backtrace.join("\n")
+     #@errorMessage = e.message
+  # end
+   #	render 'blood_pressures/average'
+  #end
 
   post :create do
 		@min_value_message = ""
 		@min_value_message = ""
 		params[:blood_pressure]["date"] = DateTime.now.to_s
-		params[:blood_pressure]["duenio"] = session[:current_account_username]
+		params[:blood_pressure]["name"] = session[:current_account_username]
     @blood_pressure = BloodPressure.new(params[:blood_pressure])
 	  if @blood_pressure.save
 	    redirect(url(:blood_pressures, :show, :id => @blood_pressure.id))

@@ -16,6 +16,9 @@ module NavigationHelpers
    	when /the new record\s?page/
       '/blood_pressures/new'
 
+   when /blood pressures average\s?page/
+      '/blood_pressure_records'
+
 	
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

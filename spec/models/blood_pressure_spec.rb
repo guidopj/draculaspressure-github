@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe BloodPressure do
 	
-	describe 'check_min' do
+  describe 'check_min' do
 	
-		it 'should return true if the value is an Integer' do
-			blood_pressure = BloodPressure.new
-			blood_pressure.min = 11
-			blood_pressure.check_min.should be true
-		end
+    it 'should return true if the value is an Integer' do
+      blood_pressure = BloodPressure.new
+      blood_pressure.min = 11
+      blood_pressure.check_min.should be true
+   end
 
 		it 'should return false if the value is not Integer' do
 			blood_pressure = BloodPressure.new
@@ -20,14 +20,14 @@ describe BloodPressure do
 			blood_pressure = BloodPressure.new
 			blood_pressure.check_min.should be false
 		end
-        end
+	end
 	
 	describe 'check_max' do
 		it 'should return true if the value is an Integer' do
-			blood_pressure = BloodPressure.new
-			blood_pressure.max = 11
-			blood_pressure.check_max.should be true
-		end
+		blood_pressure = BloodPressure.new
+		blood_pressure.max = 11
+		blood_pressure.check_max.should be true
+	end
 
 		it 'should return false if the value is not Integer' do
 			blood_pressure = BloodPressure.new
@@ -55,5 +55,16 @@ describe BloodPressure do
 			blood_pressure.min = 6
 			blood_pressure.get_state_image.should eq("http://www.cientec.or.cr/matematica/origami/rojo.gif")
 		end                
+  end
+  
+  describe 'maxPressureAverage' do
+    it 'should return 13 when max are 14 and 12' do
+    	bloodpressure1 = BloodPressure.new
+    	bloodpressure1.max = 14
+    	bloodpressure = BloodPressure.new
+    	bloodpressure.max = 12
+    	BloodPressure.should_receive(:all).and_return([bloodpressure1,bloodpressure])
+    	BloodPressure.maxPressureAverage().should eq 13
+    end
   end
 end
