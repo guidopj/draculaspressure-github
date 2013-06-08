@@ -64,7 +64,7 @@ describe BloodPressure do
     	bloodpressure = BloodPressure.new
     	bloodpressure.max = 12
     	BloodPressure.should_receive(:all).and_return([bloodpressure1,bloodpressure])
-    	BloodPressure.maxPressureAverage().should eq 13
+    	BloodPressure.maxPressureAverage(bloodpressure1.date,bloodpressure.date).should eq 13
     end
   end
 end

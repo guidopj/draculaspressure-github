@@ -1,3 +1,4 @@
+@wip
 Feature: average of blood pressures in a range of date 
 
 	Background:
