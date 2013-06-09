@@ -32,14 +32,14 @@
   </div>
   <div  style="height:50px; color:#0000FF">
     <p>see your min and max pressure average</p>
-  <form method='post' action='/blood_pressures' noValidate='noValidate'>
+  <form method="post" action="/blood_pressures.rb" noValidate='noValidate'>
 	  <%= csrf_token_field %>
 	  <label for='date1'>minDate</label>
 		<input type='date' id='minDate' name='minDate' placeholder='yyyy-mm-dd' />
-		<label for='date2'>Date2:</label>
+		<label for='date2'>maxDate</label>
 		<input type='date' id='maxDate' name='maxDate' placeholder='yyyy-mm-dd' />    
+     <a href = "blood_pressures/calculateAverage"><input class ="btn btn-primary" id = "buttonCalculate" type ='button' value ="Calculate average"></input>
   </form>
-    <a href = "blood_pressures/average"><input class ="btn btn-primary" id = "buttonCalculate" type ='button' value = "Calculate average"></input>
   </div></a>
   </body>   
 </html>

@@ -5,7 +5,7 @@ class BloodPressure
   property :id, Serial
   property :max, Integer
   property :min, Integer
-  property :date, DateTime, :required => true
+  property :date, Date, :required => true
   property :name, String
 
 	validates_with_method :check_min
@@ -29,27 +29,27 @@ class BloodPressure
   
   def self.minPressureAverage(minDate, maxDate)
      avr = 0
-     @record = BloodPressure.all()#:date => minDate..maxDate)
-       if @record.count != 0
-         @record.each do |r|
+     @record = BloodPressure.all(:date => (minDate..maxDate))
+      if @record.count != Nil
+        @record.each do |r|
            avr = avr + r.min
          end
-       else
-         raise WithoutElementsException
-       end
+      else
+         return "WithoutElementsException"
+      end
      return (avr.to_f / @record.count)
   end
 
   def self.maxPressureAverage(minDate, maxDate)
-     avr = 0
-    @record = BloodPressure.all(:date => minDate..maxDate)
-      if @record.length != 0
+    avr = 0
+    @record = BloodPressure.all(:date => (minDate..maxDate)) 
+      if @record.count != Nil
         @record.each do |r|
           avr = avr + r.max
         end
       else
-        raise WithoutElementsException
-      end
-     return (avr.to_f / @record.count)
+        return "WithoutElementsException"
+      end 
+    return (avr.to_f / @record.count) 
   end
 end

@@ -1,38 +1,27 @@
 Draculaspressureapp::App.controllers :blood_pressures do
 
+  get :new do
+    @title = 'new record'
+    @blood_pressure = BloodPressure.new
+    render 'blood_pressures/new'
+  end
   get :index do
     @title = "Tomas de Presion"
     @blood_pressure = BloodPressure.all
     render 'blood_pressures/index'
   end
 
-  get :new do
-    @title = 'new record'
-    @blood_pressure = BloodPressure.new
-    render 'blood_pressures/new'
-  end
 
   get :show do
     @blood_pressure = BloodPressure.get(params[:id].to_i)
     render 'blood_pressures/show'
   end
 
-  get :average do
-    @avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate])
-    @avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate])
-    render 'blood_pressures/average'
+  get :calculateAverage do
+   	@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate])
+   	@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate])
+   	render 'blood_pressures/average'
   end
-
-  #get :calculateAverage do
-  # begin
-   #	@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate])
-   #	@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate])
-   #rescue => detail
-    # @errorMessage = detail.backtrace.join("\n")
-     #@errorMessage = e.message
-  # end
-   #	render 'blood_pressures/average'
-  #end
 
   post :create do
 		@min_value_message = ""
