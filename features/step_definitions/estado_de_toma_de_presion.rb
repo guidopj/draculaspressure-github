@@ -1,8 +1,10 @@
-Then(/^I should see the image "(.*?)"$/) do |image|
-  if page.respond_to? :should
-		page.should have_selector("img[src$='#{image}']")
-	else
-		assert page.has_selector?("img[src='#{image}']")
-	end
+When(/^I press the seeHistoryButton$/) do
+  visit "/blood_pressure_records"
 end
+
+Then(/^I should see the image "(.*?)"$/) do |image|
+	page.should have_xpath("//img[contains(@src, \"#{image}\")]")
+end
+
+ 
 
