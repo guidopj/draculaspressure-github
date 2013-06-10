@@ -18,8 +18,8 @@ Draculaspressureapp::App.controllers :blood_pressures do
   end
 
   post :calculateAverage do  
-		@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate])
-		@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate])
+		@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate],current_account.friendly_name)
+		@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate],current_account.friendly_name)
 		render 'blood_pressures/average'
   end
 

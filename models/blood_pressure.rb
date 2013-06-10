@@ -27,9 +27,9 @@ class BloodPressure
     end
   end
   
-  def self.minPressureAverage(minDate, maxDate)
+  def self.minPressureAverage(minDate, maxDate, name)
      avr = 0
-     @record = BloodPressure.all(:date => (minDate..maxDate))
+     @record = BloodPressure.all(:name => name, :date => (minDate..maxDate))
       if @record.count != 0
         @record.each do |r|
            avr = avr + r.min
@@ -42,7 +42,7 @@ class BloodPressure
 
   def self.maxPressureAverage(minDate, maxDate)
     avr = 0
-    @record = BloodPressure.all(:date => (minDate..maxDate)) 
+    @record = BloodPressure.all(:name => name,:date => (minDate..maxDate)) 
       if @record.count != 0
         @record.each do |r|
           avr = avr + r.max
