@@ -13,10 +13,10 @@ class Account
   end
 
   def self.create_with_omniauth(auth)
-    account = Account.new
-    account.provider = auth["provider"]
-    account.uid      = auth["uid"]
-		account.name = auth["info"]["nickname"] # warn: this is for twitter
+    account 				= Account.new
+    account.provider= auth["provider"]
+    account.uid    	= auth["uid"]
+		account.name 		= auth["info"]["nickname"]
     account.save
     account
   end

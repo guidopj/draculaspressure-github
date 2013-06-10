@@ -30,12 +30,12 @@ class BloodPressure
   def self.minPressureAverage(minDate, maxDate)
      avr = 0
      @record = BloodPressure.all(:date => (minDate..maxDate))
-      if @record.count != Nil
+      if @record.count != 0
         @record.each do |r|
            avr = avr + r.min
          end
       else
-         return "WithoutElementsException"
+         raise WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
       end
      return (avr.to_f / @record.count)
   end
@@ -43,12 +43,12 @@ class BloodPressure
   def self.maxPressureAverage(minDate, maxDate)
     avr = 0
     @record = BloodPressure.all(:date => (minDate..maxDate)) 
-      if @record.count != Nil
+      if @record.count != 0
         @record.each do |r|
           avr = avr + r.max
         end
       else
-        return "WithoutElementsException"
+        raise WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
       end 
     return (avr.to_f / @record.count) 
   end
