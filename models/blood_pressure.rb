@@ -40,7 +40,7 @@ class BloodPressure
      return (avr.to_f / @record.count)
   end
 
-  def self.maxPressureAverage(minDate, maxDate)
+  def self.maxPressureAverage(minDate, maxDate,name)
     avr = 0
     @record = BloodPressure.all(:name => name,:date => (minDate..maxDate)) 
       if @record.count != 0

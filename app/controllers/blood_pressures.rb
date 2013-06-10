@@ -23,7 +23,7 @@ Draculaspressureapp::App.controllers :blood_pressures do
 		render 'blood_pressures/average'
   end
 
-  post :create do
+  get :create do
 		@min_value_message = ""
 		@min_value_message = ""
 		params[:blood_pressure]["date"] = DateTime.now.to_s
