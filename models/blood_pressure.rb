@@ -1,7 +1,9 @@
+require 'date/format'
+require 'time'
+
 class BloodPressure
   include DataMapper::Resource
 
-  # property <name>, <type>
   property :id, Serial
   property :max, Integer
   property :min, Integer
@@ -11,6 +13,15 @@ class BloodPressure
 	validates_with_method :check_min
 	validates_with_method :check_max
 	
+	def self.check_date(date)  
+		begin	
+			Date.parse(date)
+		rescue Exception
+			return false
+		end
+		return date.length == 10 
+  end
+
   def check_min  
     return self.min.is_a?(Integer)
   end

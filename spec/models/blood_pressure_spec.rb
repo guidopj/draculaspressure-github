@@ -2,6 +2,24 @@ require 'spec_helper'
 
 describe BloodPressure do
 	
+	describe 'check_date' do
+	
+    it 'should return true if the date is a Date' do
+      BloodPressure.check_date('2013-10-10').should be true
+   end
+
+		
+    it 'should return false if the date is not a Date' do
+      BloodPressure.check_date('2').should be false
+   end
+
+		it 'should return false if the date is kind of a Date' do
+      BloodPressure.check_date('2013-10-10----2').should be false
+   end
+
+
+	end
+
   describe 'check_min' do
 	
     it 'should return true if the value is an Integer' do

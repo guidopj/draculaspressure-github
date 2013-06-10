@@ -1,0 +1,13 @@
+
+	 <div  style="height:50px; color:#0000FF">
+		<form method='post' action='/blood_pressures/calculateAverage'>
+			<%= csrf_token_field %>
+			<label for='date1'>minDate</label>
+			<input type='DateTime' id='minDate' name='minDate' placeholder='yyyy-mm-dd' />
+			<label for='date2'>maxDate</label>
+			<input type='DateTime' id='maxDate' name='maxDate' placeholder='yyyy-mm-dd' />    
+			<button type='submit' id="submit">See an Average between Dates</button>  
+			<p><%= @errorMessageAverage %></p>
+		</form>
+  </div></a>
+

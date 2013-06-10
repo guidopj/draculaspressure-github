@@ -17,10 +17,25 @@ Draculaspressureapp::App.controllers :blood_pressures do
     render 'blood_pressures/show'
   end
 
+  get '/averageForm' do
+     render 'blood_pressures/averageForm'
+  end
+
   post :calculateAverage do  
-		@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate],current_account.friendly_name)
-		@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate],current_account.friendly_name)
-		render 'blood_pressures/average'
+		if BloodPressure.check_date(params[:minDate])	&& 	BloodPressure.check_date(params[:maxDate])	
+			begin	
+				@avrMin = BloodPressure.minPressureAverage(params[:minDate],params[:maxDate],current_account.friendly_name)
+				@avrMax = BloodPressure.maxPressureAverage(params[:minDate],params[:maxDate],current_account.friendly_name)
+				@errorMessageAverage= ""
+				render 'blood_pressures/average'				
+			rescue WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
+				@errorMessageAverage= "No hay tomas de presion entre las fechas indicadas"
+				render 'blood_pressures/averageForm'
+			end
+		else
+			@errorMessageAverage= "Fechas invalidas, por favor siga este formato: yyyy-mm-dd"
+			render 'blood_pressures/averageForm'
+		end
   end
 
   post :create do
