@@ -34,18 +34,17 @@ module Draculaspressureapp
       render '/home/login'
     end
 
-   get '/blood_pressure_records' do
-		
-     @rec = BloodPressure.all(:name => current_account.friendly_name, :order => [:id.desc], :limit => 10)
-     render 'blood_pressures/blood_pressure_records'
-  end
+		get '/blood_pressures/index' do
+			@title = "Tomas de Presion"
+			render '/blood_pressures/index'
+		end
 
-    get :auth, :map => '/auth/:provider/callback' do
+    post :auth, :map => '/auth/:provider/callback' do
         auth    = request.env["omniauth.auth"]
         account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) || 
                 Account.create_with_omniauth(auth)
         set_current_account(account)
-        redirect "/blood_pressures/new"
+        redirect "/blood_pressures/index"
     end
   end
 end
