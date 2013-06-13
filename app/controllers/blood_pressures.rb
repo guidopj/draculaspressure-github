@@ -28,11 +28,11 @@ Draculaspressureapp::App.controllers :blood_pressures do
 				@errorMessageAverage= ""
 				render 'blood_pressures/average'				
 			rescue WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
-				@errorMessageAverage= "No hay tomas de presion entre las fechas indicadas"
+				@errorMessageAverage= "No such records in the specified dates"
 				render 'blood_pressures/averageForm'
 			end
 		else
-			@errorMessageAverage= "Fechas invalidas, por favor siga este formato: yyyy-mm-dd"
+			@errorMessageAverage= "Invalid dates, please follow the convention: yyyy-mm-dd"
 			render 'blood_pressures/averageForm'
 		end
   end
