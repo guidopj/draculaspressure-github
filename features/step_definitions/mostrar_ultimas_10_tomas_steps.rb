@@ -9,10 +9,6 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-Given(/^i am at "(.*?)" page$/) do |arg1|
-  visit "/blood_pressure_records"
-end
-
 Given(/^i do not have any pressure records$/) do
  BloodPressure.destroy
 end
@@ -166,10 +162,6 @@ t11 = BloodPressure.new
  t11.date = "2013-01-01"
  t11.name = "Guido"
  t11.save
-end
-
-When(/^when i am on the "(.*?)"$/) do |arg1|
-    visit "/blood_pressure_records"
 end
 
 Then(/^i should not see id "(.*?)"$/) do |arg1|

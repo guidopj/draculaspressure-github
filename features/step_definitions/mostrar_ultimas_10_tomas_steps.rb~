@@ -9,10 +9,6 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-Given(/^i am at "(.*?)" page$/) do |arg1|
-  visit "/blood_pressure_records"
-end
-
 Given(/^i do not have any pressure records$/) do
  BloodPressure.destroy
 end

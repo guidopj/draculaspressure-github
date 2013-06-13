@@ -1,7 +1,3 @@
-Then(/^I should see  "(.*?)"$/) do |arg1|
-  arg1
-end
-
 Given(/^I have a blood pressure record with min (\d+) and max (\d+) and date "(.*?)"$/) do |min, max, date|
   bp1 = BloodPressure.new
   bp1.min = min
@@ -13,7 +9,4 @@ Given(/^I have a blood pressure record with min (\d+) and max (\d+) and date "(.
   bp2.date = date
 end
 
-Then(/^I should see  (\d+)$/) do |arg1|
-  8
-end
 

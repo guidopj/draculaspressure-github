@@ -17,8 +17,10 @@ module NavigationHelpers
       '/blood_pressures/new'
 
    when /blood pressures average\s?page/
-      '/blood_pressure_records'
+      '/blood_pressures/averageForm'
 
+		when /the history\s?page/
+      '/blood_pressures/blood_pressure_records'
 	
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

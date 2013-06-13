@@ -76,13 +76,37 @@ describe BloodPressure do
   end
   
   describe 'maxPressureAverage' do
-    it 'should return 13 when max are 14 and 12' do
-    	bloodpressure1 = BloodPressure.new
+    it 'should return 13 when maxs are 14 and 12' do
+			minDate = DateTime.now()
+			maxDate = DateTime.now()    	
+			bloodpressure1 = BloodPressure.new
     	bloodpressure1.max = 14
-    	bloodpressure = BloodPressure.new
-    	bloodpressure.max = 12
-    	BloodPressure.should_receive(:all).and_return([bloodpressure1,bloodpressure])
-    	BloodPressure.maxPressureAverage(bloodpressure1.date,bloodpressure.date).should eq 13
+			bloodpressure1.name = "pepe"
+			
+    	bloodpressure2 = BloodPressure.new
+    	bloodpressure2.max = 12
+			bloodpressure2.name = "pepe"
+			
+    	BloodPressure.should_receive(:all).with(:name => "pepe",:date => (minDate..maxDate)).and_return([bloodpressure1,bloodpressure2])
+    	BloodPressure.maxPressureAverage(minDate,maxDate,"pepe").should eq 13
     end
+	end
+
+	describe 'minPressureAverage' do
+    it 'should return 13 when mins are 14 and 12' do
+			minDate = DateTime.now()
+			maxDate = DateTime.now()    	
+			bloodpressure1 = BloodPressure.new
+    	bloodpressure1.min = 14
+			bloodpressure1.name = "pepe"
+			
+    	bloodpressure2 = BloodPressure.new
+    	bloodpressure2.min = 12
+			bloodpressure2.name = "pepe"
+			
+    	BloodPressure.should_receive(:all).with(:name => "pepe",:date => (minDate..maxDate)).and_return([bloodpressure1,bloodpressure2])
+    	BloodPressure.minPressureAverage(minDate,maxDate,"pepe").should eq 13
+    end
+
   end
 end
