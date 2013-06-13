@@ -2,8 +2,8 @@
   <form class="centered" method="post" action='/blood_pressures/create'>
     <%= csrf_token_field %>
     <h1>Pression record details</h1>
-    <input type="text" id="blood_pressure[min]" name="blood_pressure[min]" placeholder="min value" class="large" value="<%= @blood_pressure.min %>"/>
     <input type="text" id="blood_pressure[max]" name="blood_pressure[max]" placeholder="max value" class="large" value="<%= @blood_pressure.max %>"/>
+ <input type="text" id="blood_pressure[min]" name="blood_pressure[min]" placeholder="min value" class="large" value="<%= @blood_pressure.min %>"/>
 		
 		<p><%= @min_value_message %></p>
 		<p><%= @max_value_message %></p>

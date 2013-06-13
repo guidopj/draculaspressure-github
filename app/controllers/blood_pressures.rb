@@ -12,7 +12,6 @@ Draculaspressureapp::App.controllers :blood_pressures do
   end
 
    get '/blood_pressure_records' do
-		
      @rec = BloodPressure.all(:name => current_account.friendly_name, :order => [:id.desc], :limit => 10)
      render 'blood_pressures/blood_pressure_records'
   end
