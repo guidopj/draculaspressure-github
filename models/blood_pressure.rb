@@ -24,11 +24,11 @@ class BloodPressure
   end
 
   def check_min  
-    return self.min.is_a?(Integer)
+    return min.is_a?(Integer)
   end
 	
   def check_max
-    return self.max.is_a?(Integer)
+    return max.is_a?(Integer)
   end
 
   def get_state_image
@@ -38,30 +38,28 @@ class BloodPressure
       return "http://www.cientec.or.cr/matematica/origami/rojo.gif" 
     end
   end
-  
+
   def self.minPressureAverage(minDate, maxDate, name)
-     avr = 0
+		funcion = Proc.new {|blood_pressure_record| blood_pressure_record.min}		
+		self.pressureAverage(minDate, maxDate, name, funcion)
+  end
+
+  def self.maxPressureAverage(minDate, maxDate,name)
+		funcion = Proc.new {|blood_pressure_record| blood_pressure_record.max}		
+		self.pressureAverage(minDate, maxDate, name, funcion)
+  end
+
+	private
+	def self.pressureAverage(minDate, maxDate, name, funcion)
+	   avr = 0
      @record = BloodPressure.all(:name => name, :date => (minDate..maxDate))
       if @record.count != 0
-        @record.each do |r|
-           avr = avr + r.min
+        @record.each do |blood_pressure_record|
+           avr = avr + funcion.call(blood_pressure_record)
          end
       else
          raise WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
       end
      return (avr.to_f / @record.count)
-  end
-
-  def self.maxPressureAverage(minDate, maxDate,name)
-    avr = 0
-    @record = BloodPressure.all(:name => name,:date => (minDate..maxDate)) 
-      if @record.count != 0
-        @record.each do |r|
-          avr = avr + r.max
-        end
-      else
-        raise WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
-      end 
-    return (avr.to_f / @record.count) 
   end
 end
