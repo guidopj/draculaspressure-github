@@ -164,7 +164,13 @@ t11 = BloodPressure.new
  t11.save
 end
 
-Then(/^i should not see id "(.*?)"$/) do |arg1|
- 
+Then(/^i should not see id "(.*?)"$/) do |content|
+    if page.respond_to? :should
+      page.should have_no_content(content)
+    else
+      assert page.has_no_content?(content)
+    end
 end
+
+
 

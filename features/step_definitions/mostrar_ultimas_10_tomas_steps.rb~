@@ -164,11 +164,13 @@ t11 = BloodPressure.new
  t11.save
 end
 
-When(/^when i am on the "(.*?)"$/) do |arg1|
-    visit "/blood_pressure_records"
+Then(/^i should not see id "(.*?)"$/) do |arg1|
+    if page.respond_to? :should
+      page.should have_content(spected_message)
+    else
+      assert page.has_content?(spected_message)
+    end
 end
 
-Then(/^i should not see id "(.*?)"$/) do |arg1|
- 
-end
+
 

@@ -28,7 +28,7 @@ Draculaspressureapp::App.controllers :blood_pressures do
 				@errorMessageAverage= ""
 				render 'blood_pressures/average'				
 			rescue WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
-				@errorMessageAverage= "No such records in the specified dates"
+				@errorMessageAverage= "No such records in the specified range of dates"
 				render 'blood_pressures/averageForm'
 			end
 		else

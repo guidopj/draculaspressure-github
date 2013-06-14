@@ -1,3 +1,4 @@
+
 Feature:  Estado de toma de presion
 	As a User i want to see an imagen that represent the state of my 
 	arterial pressure

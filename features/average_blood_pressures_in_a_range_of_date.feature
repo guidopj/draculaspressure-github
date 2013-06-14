@@ -1,51 +1,55 @@
+
 Feature: average of blood pressures in a range of date 
 
 	Background:
-		Given I am logged in
-		When I visit "/blood pressures average page"
+		Given i do not have any pressure records		
+		Given I am logged in with name "juancito"
    
   Scenario:  No records yet
+		When I visit "/blood pressures average page"
+		When I fill in "minDate" with "2010-01-01"
+		When I fill in "maxDate" with "2020-01-01"		
 		When I press "buttonCalculate"
-		Then I should see  "WithoutElementsException"
+		Then I should see "No such records in the specified range of dates"
 
 	Scenario:  Average five records in a day
-		Given I have a blood pressure record with min 8 and max 12 and date "2015-1-1"
-		Given I have a blood pressure record with min 8 and max 12 and date "2015-1-1"
-		Given I have a blood pressure record with min 8 and max 12 and date "2015-1-1"
-		Given I have a blood pressure record with min 8 and max 12 and date "2015-1-1"
-		Given I have a blood pressure record with min 8 and max 12 and date "2015-1-1"
-		When I visit "the history page"
-		When I fill in "minDate" with "2015-1-1"
-		When I fill in "maxDate" with "2015-1-1"
+		Given I have a blood pressure record with min "8" and max "12" and date "2015-01-01" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "12" and date "2015-01-01" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "12" and date "2015-01-01" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "12" and date "2015-01-01" with name "juancito"
+		Given I have a blood pressure record with min "10" and max "12" and date "2015-01-01" with name "pepe"
+		When I visit "/blood pressures average page"
+		When I fill in "minDate" with "2015-01-01"
+		When I fill in "maxDate" with "2015-01-01"
 		When I press "buttonCalculate"
-		Then I should see  "8"
-		Then I should see  "12"
+		Then I should see "8"
+		Then I should see "12"
 
 	Scenario:  Average five records in a range of dates
-		Given I have a blood pressure record with min 7 and max 13 and date "2010-1-1"
-		Given I have a blood pressure record with min 7 and max 13 and date "2011-2-3"
-		Given I have a blood pressure record with min 7 and max 13 and date "2014-8-2"
-		Given I have a blood pressure record with min 8 and max 120 and date "2020-3-10"
-		Given I have a blood pressure record with min 8 and max 12 and date "2100-7-7"
-		When I visit "the history page"
-		When I fill in "minDate" with "2010-1-1"
-		When I fill in "maxDate" with "2020-1-1"
+		Given I have a blood pressure record with min "7" and max "13" and date "2010-01-01" with name "juancito"
+		Given I have a blood pressure record with min "7" and max "13" and date "2011-02-03" with name "juancito"
+		Given I have a blood pressure record with min "7" and max "13" and date "2014-08-02" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "120" and date "2020-03-10" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "12" and date "2100-07-07" with name "juancito"
+		When I visit "/blood pressures average page"	
+		When I fill in "minDate" with "2010-01-01"
+		When I fill in "maxDate" with "2020-01-01"
 		When I press "buttonCalculate"
-		Then I should see  "7"
-		Then I should see  "13"
+		Then I should see "7"
+		Then I should see "13"
 
 
 
 	Scenario:  there is no records in a range of date
-		Given I have a blood pressure record with min 7 and max 13 and date "2010-1-1"
-		Given I have a blood pressure record with min 7 and max 13 and date "2011-2-3"
-		Given I have a blood pressure record with min 7 and max 13 and date "2014-8-2"
-		Given I have a blood pressure record with min 8 and max 12 and date "2020-3-10"
-		Given I have a blood pressure record with min 8 and max 12 and date "2100-7-7"
-		When I press "See Your Record Average"
-		When I fill in "minDate" with "2005-1-1"
-		When I fill in "maxDate" with "2009-1-1"
+		Given I have a blood pressure record with min "7" and max "13" and date "2010-01-01" with name "juancito"
+		Given I have a blood pressure record with min "7" and max "13" and date "2011-02-03" with name "juancito"
+		Given I have a blood pressure record with min "7" and max "13" and date "2014-08-02" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "12" and date "2020-03-10" with name "juancito"
+		Given I have a blood pressure record with min "8" and max "12" and date "2100-07-07" with name "juancito"
+		When I visit "/blood pressures average page"	
+		When I fill in "minDate" with "2005-01-01"
+		When I fill in "maxDate" with "2009-01-01"
 		When I press "buttonCalculate"
-		Then I should see "WithoutElementsException"
+		Then I should see "No such records in the specified range of dates"
 
 

@@ -16,6 +16,14 @@ Given(/^I am logged in$/) do
   click_button "submit"
 end
 
+Given(/^I am logged in with name "(.*?)"$/) do |name|
+  visit "/login"
+  fill_in("name", :with => name)
+  fill_in("email", :with => name)
+  click_button "submit"
+end
+
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -35,6 +43,7 @@ Then(/^I should see "(.*?)"$/) do |spected_message|
       assert page.has_content?(spected_message)
     end
 end
+
 
 When(/^I visit "(.*?)"$/) do |page|
   visit path_to(page)
