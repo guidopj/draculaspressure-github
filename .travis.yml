@@ -1,6 +1,6 @@
 language: ruby
 before_script:
-  - mysql -e 'create database rene_test;'
+  - mysql -e 'create database draculaspressureapp_test;'
 
   - "export DISPLAY=:99.0"
 
