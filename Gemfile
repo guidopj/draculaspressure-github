@@ -32,6 +32,7 @@ gem 'dm-ar-finders'
 gem 'tilt', '1.3.7'
 
 # Test requirements
+gem 'simplecov'
 gem 'dm-sqlite-adapter', :group => 'test' 
 gem 'rspec', :group => 'test'
 gem 'capybara', :group => 'test'

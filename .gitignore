@@ -1,5 +1,7 @@
 *~
 *.my
+events_helper.rb
+pressure_average.rb
 .idea
 .DS_Store
 log/**/*
