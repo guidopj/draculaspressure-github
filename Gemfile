@@ -33,6 +33,7 @@ gem 'tilt', '1.3.7'
 
 # Test requirements
 gem 'simplecov'
+gem 'selenium-webdriver'
 gem 'dm-sqlite-adapter', :group => 'test' 
 gem 'rspec', :group => 'test'
 gem 'capybara', :group => 'test'
