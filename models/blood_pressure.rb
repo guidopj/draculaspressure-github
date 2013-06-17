@@ -1,6 +1,6 @@
 require 'date/format'
 require 'time'
-require 'csv'
+require 'spreadbase'
 
 class BloodPressure
   include DataMapper::Resource
@@ -61,5 +61,26 @@ class BloodPressure
          raise WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
       end
      return (avr.to_f / @record.count)
+  end
+
+	def self.exportBloodPressures(name,exportFileName)	
+		if File.exists?(exportFileName+".ods")			
+			File.delete(exportFileName+".ods")			
+		end
+		@record = BloodPressure.all(:name => name)		
+
+		document = SpreadBase::Document.new(exportFileName+".ods")
+		document.tables << SpreadBase::Table.new(
+			'Blood Pressures',[
+				['duenio','max','min','date'],
+				['','','','']
+			]
+		)
+
+		@record.each do |bp|
+				document.tables[0].append_row([bp.name,bp.max,bp.min,bp.date])
+		end
+		document.save
+		return document
   end
 end

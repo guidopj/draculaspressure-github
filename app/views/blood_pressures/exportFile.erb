@@ -1,7 +1,14 @@
-<html>
-	<head></head>
-	<body>
-		<h1>Export your blood pressures</h1>
-    <% @exportedFile %>
-	</body>
-</html>
+<div class="well">
+  <form class="centered" method="post" action='/blood_pressures/export'>
+    <%= csrf_token_field %>
+    <h1>Export Records</h1>
+    <input type="text" id="file_name" name="file_name" placeholder="Nombre del Archivo" class="large"/>
+    
+			<button type='submit' class = "btn btn-primary" id="export">Export Records</button> 
+
+  </form>
+</div>
+
+	<div class = "well">
+	<a href="/blood_pressures/index"><button class = "btn btn-primary" id="GoBack">Go Back To Blood Pressures Index<button></a>  
+	</div>

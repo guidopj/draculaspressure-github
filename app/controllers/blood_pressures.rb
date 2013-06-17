@@ -30,6 +30,16 @@ Draculaspressureapp::App.controllers :blood_pressures do
 
 	  end
   end
+
+	get :exportForm do
+		render '/blood_pressures/exportFile'
+	end
+
+	post :export do
+		document = BloodPressure.exportBloodPressures(current_account.friendly_name,params[:file_name])
+		puts document.document_path
+		render 'blood_pressures/index'
+  end
  
   get :show do
     @blood_pressure = BloodPressure.get(params[:id].to_i)

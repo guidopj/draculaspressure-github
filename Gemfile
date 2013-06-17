@@ -30,6 +30,7 @@ gem 'dm-types'
 gem 'dm-core'
 gem 'dm-ar-finders'
 gem 'tilt', '1.3.7'
+gem 'spreadbase'
 
 # Test requirements
 gem 'simplecov'
