@@ -63,13 +63,15 @@ class BloodPressure
      return (avr.to_f / @record.count)
   end
 
-	def self.exportBloodPressures(name,exportFileName)	
-		if File.exists?(exportFileName+".ods")			
-			File.delete(exportFileName+".ods")			
+	def self.exportBloodPressures(name,exportFileName)		
+		path = "../../../"+exportFileName+".ods"	
+		if File.exists?(path)			
+			File.delete(path)			
 		end
+		
 		@record = BloodPressure.all(:name => name)		
 
-		document = SpreadBase::Document.new(exportFileName+".ods")
+		document = SpreadBase::Document.new(path)
 		document.tables << SpreadBase::Table.new(
 			'Blood Pressures',[
 				['duenio','max','min','date'],
@@ -79,7 +81,7 @@ class BloodPressure
 
 		@record.each do |bp|
 				document.tables[0].append_row([bp.name,bp.max,bp.min,bp.date])
-		end
+		end	
 		document.save
 		return document
   end

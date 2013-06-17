@@ -131,7 +131,7 @@ describe BloodPressure do
 			document = BloodPressure.exportBloodPressures('asd',"Chalu")
 			puts document.tables[0].to_s(:with_headers => true)
 		
-			File.exists?("Chalu.ods").should be true
+			File.exists?("../../../Chalu.ods").should be true
 
     end
   end
