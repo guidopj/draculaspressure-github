@@ -111,28 +111,12 @@ describe BloodPressure do
   end
 	
 	describe 'exportBloodPressures' do
-    it 'it should exists' do
-			date1 = DateTime.now()
-			date2 = DateTime.now()    	
-			bloodpressure1 = BloodPressure.new
-    	bloodpressure1.min = 14
-			bloodpressure1.max = 20
-			bloodpressure1.name = "asd"
-			bloodpressure1.date = date1
+    it 'it should receive all with name asd' do			
 			
-    	bloodpressure2 = BloodPressure.new
-    	bloodpressure2.min = 12
-			bloodpressure2.max = 20
-			bloodpressure2.name = "asd"
-			bloodpressure2.date = date2
-			
-    	BloodPressure.should_receive(:all).with(:name => "asd").and_return([bloodpressure1,bloodpressure2])
-			
-			document = BloodPressure.exportBloodPressures('asd',"Chalu")
-			puts document.tables[0].to_s(:with_headers => true)
-		
-			File.exists?("../../../Chalu.ods").should be true
-
+			BloodPressure.should_receive(:all).with(:name => "asd").and_return([])
+			BloodPressure.exportBloodPressures('asd')
+    	
+			#falta testear que lo que me devuelve es exactamente un codigo inconprensible :P	
     end
   end
 end
