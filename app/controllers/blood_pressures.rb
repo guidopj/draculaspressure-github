@@ -1,3 +1,4 @@
+require 'csv'
 Draculaspressureapp::App.controllers :blood_pressures do
 
 	get '/index' do
@@ -35,10 +36,10 @@ Draculaspressureapp::App.controllers :blood_pressures do
 		render '/blood_pressures/exportFile'
 	end
 
-	post :export do
-		document = BloodPressure.exportBloodPressures(current_account.friendly_name,params[:file_name])
-		puts document.document_path
-		render 'blood_pressures/index'
+	post :export do	
+		content_type 'aplication/ods ; charset=iso-8859-1; header=present'
+		attachment params[:file_name]+".ods"
+		BloodPressure.exportBloodPressures(current_account.friendly_name)
   end
  
   get :show do
