@@ -48,7 +48,7 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 #gem 'debugger'
 
 # Padrino Stable Gem
-gem 'padrino', '0.11.1'
+gem 'padrino', '0.11.2'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
