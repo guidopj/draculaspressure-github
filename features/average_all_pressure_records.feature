@@ -1,3 +1,4 @@
+@wip
 Feature: average of all blood pressures
 
 	Background:

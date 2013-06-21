@@ -1,3 +1,4 @@
+@wip
 Feature: delete blood pressure record 
 
 	Background:
