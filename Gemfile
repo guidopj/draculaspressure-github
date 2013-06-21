@@ -18,9 +18,9 @@ gem 'omniauth-twitter'
 # Component requirements
 gem 'slim'
 gem 'haml'
-gem 'pg', :group => 'production'
+#, :group => 'production'
 gem 'dm-mysql-adapter'
-gem 'dm-postgres-adapter', :group => 'production'
+#:group => 'production'
 gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'
@@ -30,7 +30,11 @@ gem 'dm-types'
 gem 'dm-core'
 gem 'dm-ar-finders'
 gem 'tilt', '1.3.7'
-gem 'spreadbase'
+
+group :production do
+  gem 'dm-postgres-adapter'
+  gem 'pg'
+end
 
 # Test requirements
 gem 'simplecov'
@@ -43,7 +47,7 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 #gem 'debugger'
 
 # Padrino Stable Gem
-gem 'padrino', '0.11.1'
+gem 'padrino', '0.11.2'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
