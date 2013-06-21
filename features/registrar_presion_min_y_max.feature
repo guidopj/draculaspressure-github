@@ -1,4 +1,4 @@
-
+@wip
 Feature: Registrar presion min y max
 	As a User
 	I want to record my min and max arterial blood pressure
@@ -12,6 +12,10 @@ Feature: Registrar presion min y max
 		When I fill in "blood_pressure[max]" with "120"
 		When I press "Save"
 		Then I should see "Your record has been successfully completed"
+		Then I should see "Max: 120"
+		Then I should see "Min: 80"
+		Then I should see the current time
+		
 
 	Scenario: Min is not valid
 		When I visit "/the new record page"
