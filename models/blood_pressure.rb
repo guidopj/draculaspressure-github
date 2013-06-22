@@ -8,7 +8,7 @@ class BloodPressure
   property :id, Serial
   property :max, Integer
   property :min, Integer
-  property :date, Date, :required => true
+  property :date, DateTime, :required => true
   property :name, String
 
 	validates_with_method :check_min
@@ -51,26 +51,33 @@ class BloodPressure
 
 	private
 	def self.pressureAverage(minDate, maxDate, name, funcion)
-	   avr = 0
-     @record = BloodPressure.all(:name => name, :date => (minDate..maxDate))
-      if @record.count != 0
-        @record.each do |blood_pressure_record|
+     records = BloodPressure.all(:name => name, :date => (minDate..maxDate))
+     self.pressureAverageForRecords(records, funcion)
+  end
+  
+  
+  private
+	def self.pressureAverageForRecords(records,  funcion)
+	    avr = 0
+      if records.count != 0
+        records.each do |blood_pressure_record|
            avr = avr + funcion.call(blood_pressure_record)
          end
       else
          raise WithoutElementsException::ThereIsNoRecordsInTheSpecifiedRangeOfDates
       end
-     return (avr.to_f / @record.count)
+      return (avr.to_f / records.count)
   end
+  
 
 	def self.exportBloodPressures(name)		
 		@record = BloodPressure.all(:name => name)		
 
 		hoja_de_calculo = CSV.generate do |csv|
-			csv	<< ["Owner max min date"]
+			csv	<< ["owner;max;min;date;time"]
 			csv	<< [" "]
 				@record.each do |bp|
-					csv << [bp.name+" "+bp.max.to_s+" "+bp.min.to_s+" "+bp.date.to_date.to_s]
+					csv << [bp.name+";"+bp.max.to_s+";"+bp.min.to_s+";"+ bp.date.strftime("%F") +";"+ bp.date.strftime("%H:%M") ]
 				end				
 			end
 		return hoja_de_calculo
