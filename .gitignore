@@ -14,8 +14,10 @@ db/*.db
 *.gem
 *.rbc
 .bundle
+.redcar
 .config
 coverage
+:memory
 InstalledFiles
 lib/bundler/man
 pkg

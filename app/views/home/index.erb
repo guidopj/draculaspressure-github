@@ -13,8 +13,14 @@
                   <li>Create your account and input your max and min measures. The app will save it for you.</li>
                   <li>Then you can go and check and export them</li>
                 </ol>
-            <div class="centered">
-                 <a href="/blood_pressures/index"><button class="btn big">Arterial Blood Pressures</button></a>
+            <div class="centered">              
+              <a href="/blood_pressures/index"><button class="btn big">
+              <%if(current_account)%>
+              Arterial Blood Pressures
+              <%else%>
+              Log in
+              <%end%>
+            </button></a>
             </div>
             </span>
         <div style="clear:both"></div>

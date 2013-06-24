@@ -35,13 +35,20 @@ Draculaspressureapp::App.controllers :blood_pressures do
 	get :exportForm do
 		render '/blood_pressures/exportFile'
 	end
+  
+  
+  get :delete do
+    @id = params[:record_id]
+    BloodPressure.find_by_id(@id).destroy
+		redirect '/blood_pressures/blood_pressure_records'
+	end
 
 	post :export do	
 		content_type 'aplication/ods ; charset=iso-8859-1; header=present'
-		attachment params[:file_name]+".ods"
+		attachment params[:file_name]+".csv"
 		BloodPressure.exportBloodPressures(current_account.friendly_name)
   end
- 
+
   get :show do
     @blood_pressure = BloodPressure.get(params[:id].to_i)
     render 'blood_pressures/show'
