@@ -41,5 +41,11 @@ module Draculaspressureapp
         set_current_account(account)
         redirect "/blood_pressures/index"
     end
+    
+    get :logout do
+      set_current_account(nil)
+      redirect '/'
+    end
+    
   end
 end
