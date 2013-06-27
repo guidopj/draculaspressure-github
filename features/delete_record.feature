@@ -7,19 +7,19 @@ Feature: delete blood pressure record
   Scenario: having one blood pressure record
     When I add a blood pressure record with id "209" and name "juancito"
     When I visit "/the history page"
-    When I press "delete_209"
+    When I follow "delete_209"
     Then I should see "You have not pressure records"
 
   Scenario: I still see the records that have not been deleted
     When I add a blood pressure record with id "209" and name "juancito"
     When I add a blood pressure record with id "210" and name "juancito"
     When I visit "/the history page"
-    When I press "delete_209"
+    When I follow "delete_209"
     Then I should see "210"
     
  Scenario: I should not see the deleted record
     When I add a blood pressure record with id "209" and name "juancito"
     When I add a blood pressure record with id "210" and name "juancito"
     When I visit "/the history page"
-    When I press "delete_209"
+    When I follow "delete_209"
     Then I should not see "209"

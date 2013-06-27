@@ -22,3 +22,9 @@ Then /^(?:|I )should not see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selec
     end
   end
 end
+
+When /^(?:|I )follow "([^\"]*)"(?: within "([^\"]*)")?$/ do |link, selector|
+  with_scope(selector) do
+    click_link(link)
+  end
+end
