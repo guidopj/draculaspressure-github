@@ -21,4 +21,11 @@ Then /^(?:|I )should not see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selec
       assert page.has_no_content?(text)
     end
   end
+
+end
+
+When /^(?:|I )follow "([^\"]*)"(?: within "([^\"]*)")?$/ do |link, selector|
+  with_scope(selector) do
+    click_link(link)
+  end 
 end

@@ -29,7 +29,10 @@
      <td>
      <img src= <%= r.get_state_image %> width="25" height="25"/>	
     </td>  
-    <td><input type="button" id="delete_<%= r.id %>" onClick="document.location='delete?record_id=<%= r.id %>'" class="btn btn-danger" value="Delete record" /></td>
+      <td>
+      <a href="delete?record_id=<%= r.id %>" id="delete_<%= r.id %>"> 
+      <button class="btn btn-danger" >Delete record<button></td>
+      </a> 
     </tr>
   </table>
     <% end %>
