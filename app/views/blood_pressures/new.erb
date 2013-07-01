@@ -8,17 +8,12 @@
 		<p><%= @min_value_message %></p>
 		<p><%= @max_value_message %></p>
     
-		<button class = "btn btn-primary" id="saveButton">Save<button>
-    <% if flash[:error] %>
-        <div class="alert alert-error">
-          <%=flash[:error]   %>
-        </div>
-    <% end %>
+		<button type="submit" class = "btn btn-primary" id="saveButton"> Save </button> 
 
   </form>
 
 </div>
 
 	<div class = "well">
-	<a href="/blood_pressures/index"><button class = "btn btn-primary" id="GoBack">Go Back To Blood Pressures Index<button></a>  
+	<a href="/blood_pressures/index" class = "btn btn-primary" id="GoBack">Go Back To Blood Pressures Index</a>  
 	</div>

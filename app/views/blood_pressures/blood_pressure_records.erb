@@ -7,8 +7,7 @@
     <% end %>     
   </head>
   <body>
-    <% @rec.each do |r|%>
-    <table border = "1" class="table table-striped"  id = "recordTable">  
+    <table border = "1" class="table table-striped"  id = "recordTable"> 
    <tr>
       <td>id</td>
       <td>max</td>
@@ -19,27 +18,32 @@
       <td>state</td>
      <td>delete record</td>
    </tr>
-   <tr>
-      <td><%= r.id %></td>
-      <td><%= r.max %></td>
-      <td><%= r.min %></td>
-      <td><%= r.date.strftime("%F") %></td>
-      <td><%= r.date.strftime("%H:%M") %></td>
-     <td><%= r.name %></td>
-     <td>
-     <img src= <%= r.get_state_image %> width="25" height="25"/>	
-    </td>  
-      <td>
-      <a href="delete?record_id=<%= r.id %>" id="delete_<%= r.id %>"> 
-      <button class="btn btn-danger" >Delete record<button></td>
-      </a> 
-    </tr>
+  
+		<% @rec.each do |r|%>
+		<tr> 			
+		  <td><%= r.id %></td>
+		  <td><%= r.max %></td>
+		  <td><%= r.min %></td>
+		  <td><%= r.date.strftime("%F") %></td>
+		  <td><%= r.date.strftime("%H:%M") %></td>
+			<td><%= r.name %></td>
+			<td>
+			<% if r.get_state_image  %>     
+				<img src= "http://programacionyjuegos.files.wordpress.com/2012/02/cuadrado_verde.png" width="25" height="25" />
+			<% else %>
+		   	<img src= "http://www.cientec.or.cr/matematica/origami/rojo.gif" width="25" height="25" />
+			<% end %> 	
+		</td>  
+		    <td>
+		    <a href="delete?record_id=<%= r.id %>" id="delete_<%= r.id %>" class="btn btn-danger" >Delete record</td>
+		    </a> 
+		</tr>
+		<% end %>
   </table>
-    <% end %>
   </br>
 	<div class = "well">
-	<a href="/blood_pressures/index"><button class = "btn btn-primary" id="GoBack">Go Back To Blood Pressures Index<button></a>
-  <a href="/blood_pressures/exportForm"><button class = "btn btn-primary" id="Export Records">Export Records<button></a>  
+	<a href="/blood_pressures/index" class = "btn btn-primary" id="GoBack">Go Back To Blood Pressures Index</a>
+  <a href="/blood_pressures/exportForm" class = "btn btn-primary" id="Export Records">Export Records</a>  
 	</div>
   </body>   
 </html>
