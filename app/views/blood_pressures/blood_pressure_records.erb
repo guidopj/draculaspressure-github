@@ -1,10 +1,7 @@
 <html>
   <head>        
-    <% if (@rec != nil) && !(@rec.empty?) %>
-        <p class="lead">Your blood pressure records</p>
-    <% else %>
-        <p class="lead">You have not pressure records</p>  
-    <% end %>     
+  <% if (@rec != nil) && !(@rec.empty?) %>
+  <p class="lead">Your blood pressure records</p>   
   </head>
   <body>
     <table border = "1" class="table table-striped"  id = "recordTable"> 
@@ -40,6 +37,9 @@
 		</tr>
 		<% end %>
   </table>
+	<% else %>
+    <p class="lead">You have not pressure records</p>  
+  <% end %>  
   </br>
 	<div class = "well">
 	<a href="/blood_pressures/index" class = "btn btn-primary" id="GoBack">Go Back To Blood Pressures Index</a>
